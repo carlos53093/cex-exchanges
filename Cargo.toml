@@ -1,0 +1,52 @@
+[package]
+name = "cex-exchanges"
+version = "0.1.0"
+edition = "2021"
+
+
+
+
+[dependencies]
+
+# async 
+tokio = { version = "1.13.0", features = ["full"] }
+futures = "0.3.28"
+tokio-tungstenite = { version = "0.20", features = ["native-tls"] }
+tokio-stream = "0.1.14"
+
+# serde
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_with = "3.7"
+
+
+# web
+reqwest = { version = "0.12", features = ["json", "gzip"] }
+
+# error handling
+eyre = "0.6.5"
+thiserror = "1.0"
+
+
+# misc
+paste = "1.0"
+serial_test = "2.0"
+chrono = { version = "0.4", features = ["serde"] }
+strum = "0.25"
+strum_macros = "0.25"
+clap = { version = "4", features = ["derive"] }
+rand = "0.8"
+owned_chunks = "0.1.1"
+
+# tracing
+tracing = "0.1.0"
+tracing-subscriber = { version = "0.3", default-features = false, features = ["env-filter", "fmt", "ansi"] }
+
+
+
+[features]
+default = ["us", "non-us"]
+
+all = ["non-us", "us"]
+non-us = []
+us = []
